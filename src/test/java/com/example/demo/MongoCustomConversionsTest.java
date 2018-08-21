@@ -15,7 +15,7 @@ import java.util.UUID;
 @Import(MongodbConfig.class)
 @RunWith(SpringRunner.class)
 public class MongoCustomConversionsTest {
-	
+
 	@Autowired
 	private QueryHistoryRepo userQueryHistoryRepository;
 

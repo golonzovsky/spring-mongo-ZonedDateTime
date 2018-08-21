@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.convert.ReadingConverter;
+import org.springframework.data.convert.WritingConverter;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
 import org.springframework.data.mongodb.core.convert.DbRefResolver;
@@ -64,7 +66,7 @@ class MongodbConfig {
 	}
 }
 
-
+@WritingConverter
 class ZonedDateTimeJsonSerializer implements Converter<ZonedDateTime, String> {
 	@Override
 	public String convert(ZonedDateTime value) {
@@ -72,6 +74,7 @@ class ZonedDateTimeJsonSerializer implements Converter<ZonedDateTime, String> {
 	}
 }
 
+@ReadingConverter
 class ZonedDateTimeJsonDeserializer implements Converter<String, ZonedDateTime> {
 	@Override
 	public ZonedDateTime convert(String value) {
